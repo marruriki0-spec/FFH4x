@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <title>RIKI x Proxy</title>
-  <meta name="theme-color" content="#080808">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#070707">
+
   <style>
     * {
       box-sizing: border-box;
@@ -13,26 +14,29 @@
       padding: 0;
       -webkit-tap-highlight-color: transparent;
     }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background:
-        radial-gradient(circle at 50% -10%, rgba(255,255,255,.08), transparent 35%),
+        radial-gradient(circle at 50% -10%, rgba(255,255,255,.09), transparent 36%),
         #050505;
       color: #fff;
       min-height: 100vh;
       overflow-x: hidden;
     }
+
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
       background-size: 35px 35px;
       mask-image: linear-gradient(to bottom, black, transparent);
     }
+
     .page {
       width: 100%;
       max-width: 520px;
@@ -41,460 +45,747 @@
       position: relative;
       z-index: 1;
     }
-    /* Header */
+
+    /* =========================
+       HEADER
+    ========================= */
+
     .header {
       text-align: center;
       padding: 18px 0 25px;
       animation: fadeDown .7s ease;
     }
+
     .logo {
       font-size: 27px;
       font-weight: 800;
       letter-spacing: 1.5px;
     }
+
     .logo span {
-      color: #aaa;
+      color: #999;
       font-weight: 500;
     }
+
     .subtitle {
-      color: #777;
-      font-size: 12px;
+      color: #666;
+      font-size: 11px;
       margin-top: 7px;
-      letter-spacing: .8px;
+      letter-spacing: 1.2px;
     }
-    /* Main card */
+
+    /* =========================
+       MAIN CARD
+    ========================= */
+
     .card {
-      background: rgba(18,18,18,.88);
-      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(17,17,17,.88);
+      border: 1px solid rgba(255,255,255,.075);
       border-radius: 22px;
       padding: 15px;
+
       box-shadow:
-        0 20px 60px rgba(0,0,0,.45),
-        inset 0 1px 0 rgba(255,255,255,.03);
+        0 20px 60px rgba(0,0,0,.5),
+        inset 0 1px 0 rgba(255,255,255,.025);
+
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
+
       animation: fadeUp .8s ease;
     }
+
+    /* =========================
+       VIDEO
+    ========================= */
+
     .video-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
       font-size: 15px;
       font-weight: 700;
       margin: 5px 3px 12px;
     }
+
+    .video-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+    }
+
+    .video-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .video-box {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
+
       border-radius: 15px;
       overflow: hidden;
       background: #000;
-      box-shadow: 0 10px 35px rgba(0,0,0,.4);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,.4);
     }
+
     .video-box iframe {
       width: 100%;
       height: 100%;
       border: 0;
       display: block;
     }
-    /* Key */
+
+    /* =========================
+       KEY
+    ========================= */
+
     .key-section {
-      margin-top: 16px;
+      margin-top: 17px;
     }
+
     .label {
-      color: #777;
-      font-size: 11px;
+      color: #6d6d6d;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       margin: 0 4px 8px;
     }
+
     .key-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
+
       min-height: 58px;
-      padding: 10px 11px 10px 16px;
-      background: #0c0c0c;
-      border: 1px solid rgba(255,255,255,.08);
+      padding: 9px 10px 9px 15px;
+
+      background: #0b0b0b;
+      border: 1px solid rgba(255,255,255,.075);
       border-radius: 15px;
     }
+
+    .key-left {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .key-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: #aaa;
+    }
+
+    .key-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .key-value {
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
       font-family: monospace;
-      font-size: 15px;
+      font-size: 14px;
       color: #eee;
     }
+
     .copy-btn {
       flex-shrink: 0;
+
       border: 0;
       background: #fff;
-      color: #000;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 11px 14px;
-      border-radius: 11px;
+      color: #050505;
+
+      font-weight: 800;
+      font-size: 10px;
+
+      padding: 11px 13px;
+      border-radius: 10px;
+
       cursor: pointer;
       transition: .2s;
     }
+
     .copy-btn:active {
       transform: scale(.94);
     }
-    /* Download */
+
+    /* =========================
+       DOWNLOAD
+    ========================= */
+
     .download {
       margin-top: 16px;
     }
+
     .download-btn {
       width: 100%;
       min-height: 58px;
+
       border: 0;
       border-radius: 15px;
+
       background: #fff;
       color: #050505;
-      font-size: 15px;
+
+      font-size: 14px;
       font-weight: 800;
+      letter-spacing: .2px;
+
       cursor: pointer;
+
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      box-shadow: 0 12px 30px rgba(255,255,255,.08);
-      transition: transform .2s, opacity .2s;
+
+      box-shadow:
+        0 12px 30px rgba(255,255,255,.07);
+
+      transition:
+        transform .2s ease,
+        opacity .2s ease;
     }
+
     .download-btn:active {
       transform: scale(.97);
       opacity: .85;
     }
+
     .download-icon {
-      font-size: 18px;
+      width: 19px;
+      height: 19px;
+      display: inline-flex;
     }
+
+    .download-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .info {
       text-align: center;
-      color: #666;
-      font-size: 11px;
+      color: #5f5f5f;
+      font-size: 10px;
       line-height: 1.6;
       margin-top: 12px;
     }
-    /* Notice */
+
+    /* =========================
+       NOTICE
+    ========================= */
+
     .notice {
       margin-top: 14px;
       padding: 13px 14px;
+
       border-radius: 14px;
+
       background: rgba(255,255,255,.025);
-      border: 1px solid rgba(255,255,255,.055);
-      color: #777;
-      font-size: 11px;
+      border: 1px solid rgba(255,255,255,.05);
+
+      color: #686868;
+      font-size: 10px;
       line-height: 1.6;
       text-align: center;
-    }
-    /* Chrome screen */
-    #chromeScreen {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #050505;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-    }
-    .chrome-card {
-      width: 100%;
-      max-width: 390px;
-      background: #111;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 22px;
-      padding: 28px 22px;
-      text-align: center;
-      box-shadow: 0 25px 80px rgba(0,0,0,.6);
-    }
-    .chrome-icon {
-      width: 65px;
-      height: 65px;
-      margin: 0 auto 18px;
-      border-radius: 18px;
-      background: #1d1d1d;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      gap: 8px;
     }
-    .chrome-card h2 {
-      font-size: 19px;
-      margin-bottom: 10px;
+
+    .notice-icon {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
     }
-    .chrome-card p {
-      color: #777;
-      font-size: 12px;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-    .chrome-btn {
-      display: block;
+
+    .notice-icon svg {
       width: 100%;
-      padding: 14px;
-      border-radius: 13px;
-      background: #fff;
-      color: #000;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
+      height: 100%;
     }
-    /* Error */
+
+    /* =========================
+       ERROR
+    ========================= */
+
     .error {
       text-align: center;
       padding: 45px 15px;
     }
-    .error-icon {
-      font-size: 35px;
-      margin-bottom: 15px;
-    }
+
     .error h2 {
       font-size: 19px;
       margin-bottom: 8px;
     }
+
     .error p {
       color: #777;
       font-size: 12px;
       line-height: 1.7;
     }
-    /* Footer */
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     .footer {
       text-align: center;
-      color: #444;
-      font-size: 10px;
+      color: #3f3f3f;
+      font-size: 9px;
       margin-top: 22px;
-      letter-spacing: .5px;
+      letter-spacing: .7px;
     }
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes fadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    /* Desktop warning */
-    @media (min-width: 700px) {
-      body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-      }
-      .desktop-warning {
-        display: flex !important;
-      }
-      .page {
-        display: none;
-      }
-    }
+
+    /* =========================
+       DESKTOP WARNING
+    ========================= */
+
     .desktop-warning {
       display: none;
       position: fixed;
       inset: 0;
+
       background: #050505;
+
       align-items: center;
       justify-content: center;
+
       text-align: center;
       padding: 30px;
+
       z-index: 10000;
     }
+
     .desktop-warning div {
       max-width: 380px;
     }
+
     .desktop-warning h2 {
       margin-bottom: 10px;
+      font-size: 20px;
     }
+
     .desktop-warning p {
       color: #777;
       font-size: 13px;
       line-height: 1.7;
     }
+
+    @media (min-width: 700px) {
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .desktop-warning {
+        display: flex;
+      }
+
+      .page {
+        display: none;
+      }
+    }
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
+
 <body>
-  <!-- Chrome required screen -->
-  <div id="chromeScreen">
-    <div class="chrome-card">
-      <div class="chrome-icon">🌐</div>
-      <h2>กรุณาเปิดด้วย Google Chrome</h2>
-      <p>
-        เว็บไซต์ RIKI x Proxy รองรับการใช้งานผ่าน
-        Google Chrome เท่านั้น
-      </p>
-      <a
-        class="chrome-btn"
-        href="googlechrome://navigate?url=https://riki.com/"
-      >
-        เปิดด้วย Google Chrome
-      </a>
-    </div>
-  </div>
-  <!-- Desktop warning -->
+
+  <!-- =========================
+       DESKTOP WARNING
+  ========================= -->
+
   <div class="desktop-warning">
     <div>
-      <h2>📱 Mobile Only</h2>
+      <h2>Mobile Only</h2>
+
       <p>
-        เว็บไซต์ RIKI x Proxy ออกแบบมาสำหรับโทรศัพท์มือถือเท่านั้น
-        กรุณาเปิดเว็บไซต์ผ่านมือถือ
+        RIKI x Proxy ออกแบบมาสำหรับโทรศัพท์มือถือเท่านั้น
+        กรุณาเปิดเว็บไซต์ผ่านโทรศัพท์มือถือ
       </p>
     </div>
   </div>
+
+
+  <!-- =========================
+       MAIN PAGE
+  ========================= -->
+
   <main class="page" id="mainPage">
+
     <!-- Header -->
+
     <header class="header">
+
       <div class="logo">
         RIKI <span>x Proxy</span>
       </div>
+
       <div class="subtitle">
         PROXY DOWNLOAD CENTER
       </div>
+
     </header>
-    <!-- Main -->
+
+
+    <!-- Card -->
+
     <section class="card">
-      <!-- Video -->
+
+
+      <!-- VIDEO -->
+
       <div class="video-title">
-        🎬 วิธีติดตั้ง Proxy
+
+        <span class="video-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect
+              x="3"
+              y="5"
+              width="18"
+              height="14"
+              rx="3"
+              stroke="currentColor"
+              stroke-width="1.8"/>
+            <path
+              d="M10 9L16 12L10 15V9Z"
+              fill="currentColor"/>
+          </svg>
+        </span>
+
+        วิธีติดตั้ง Proxy
+
       </div>
+
+
       <div class="video-box">
+
         <iframe
           src="https://www.youtube.com/embed/4rGPVPQQsEk"
           title="RIKI x Proxy Tutorial"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
+
       </div>
-      <!-- Key -->
+
+
+      <!-- KEY -->
+
       <div class="key-section">
+
         <div class="label">
           Your Key
         </div>
+
+
         <div class="key-box">
-          <div class="key-value" id="keyValue">
-            กำลังตรวจสอบ...
+
+          <div class="key-left">
+
+            <span class="key-icon">
+
+              <svg viewBox="0 0 24 24" fill="none">
+
+                <path
+                  d="M14.5 9.5
+                     A5 5 0 1 1 9.5 4.5
+                     A5 5 0 0 1 14.5 9.5Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"/>
+
+                <path
+                  d="M13 13L20 20M17 17L19 15M15 15L17 13"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"/>
+
+              </svg>
+
+            </span>
+
+
+            <div
+              class="key-value"
+              id="keyValue">
+              กำลังตรวจสอบ...
+            </div>
+
           </div>
+
+
           <button
             class="copy-btn"
+            id="copyBtn"
             onclick="copyKey()">
+
             COPY
+
           </button>
+
         </div>
+
       </div>
-      <!-- Download -->
+
+
+      <!-- DOWNLOAD -->
+
       <div class="download">
+
         <button
           class="download-btn"
+          id="downloadBtn"
           onclick="downloadProxy()">
-          <span class="download-icon">⬇</span>
+
+          <span class="download-icon">
+
+            <svg viewBox="0 0 24 24" fill="none">
+
+              <path
+                d="M12 3V15"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"/>
+
+              <path
+                d="M7.5 11L12 15.5L16.5 11"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+              <path
+                d="M5 20H19"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"/>
+
+            </svg>
+
+          </span>
+
           DOWNLOAD PROXY
+
         </button>
+
       </div>
-      <div class="info">
+
+
+      <div
+        class="info"
+        id="downloadInfo">
+
         กดปุ่มด้านบนเพื่อดาวน์โหลดไฟล์ Proxy
+
       </div>
+
+
+      <!-- NOTICE -->
+
       <div class="notice">
-        ⚠️ กรุณาดูวิดีโอสอนติดตั้งก่อนใช้งาน
+
+        <span class="notice-icon">
+
+          <svg viewBox="0 0 24 24" fill="none">
+
+            <path
+              d="M12 3L21 20H3L12 3Z"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linejoin="round"/>
+
+            <path
+              d="M12 9V13"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"/>
+
+            <circle
+              cx="12"
+              cy="16.5"
+              r="1"
+              fill="currentColor"/>
+
+          </svg>
+
+        </span>
+
+        กรุณาดูวิดีโอสอนติดตั้งก่อนใช้งาน
+
       </div>
+
     </section>
+
+
     <footer class="footer">
       RIKI x Proxy • Mobile Version
     </footer>
+
   </main>
+
+
   <script>
-    /*
-      ==========================================
-      RIKI x PROXY
-      KEY SYSTEM
-      ==========================================
-      ตัวอย่าง URL:
-      https://riki.com/?key=sieh72736
-      ระบบจะอ่านค่า "key" อัตโนมัติ
-    */
-    // ลิงก์ดาวน์โหลด MediaFire
+
+    /* =====================================
+       DOWNLOAD URL
+    ===================================== */
+
     const DOWNLOAD_URL =
       "https://www.mediafire.com/file/lsrwkbdjjabbgfy/proxymenu-deltav2.0.apk/file";
-    // อ่าน Key จาก URL
-    const params = new URLSearchParams(window.location.search);
-    const key = params.get("key");
-    // แสดง Key
-    const keyElement = document.getElementById("keyValue");
+
+
+    /* =====================================
+       GET KEY FROM URL
+
+       ตัวอย่าง:
+
+       https://riki.com/?key=sieh72736
+    ===================================== */
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const key =
+      params.get("key");
+
+
+    const keyElement =
+      document.getElementById("keyValue");
+
+    const downloadButton =
+      document.getElementById("downloadBtn");
+
+    const downloadInfo =
+      document.getElementById("downloadInfo");
+
+
+    /* =====================================
+       DISPLAY KEY
+    ===================================== */
+
     if (key && key.trim() !== "") {
-      keyElement.textContent = key.trim();
+
+      keyElement.textContent =
+        key.trim();
+
     } else {
-      keyElement.textContent = "ไม่พบ Key";
-      // ปิดปุ่มดาวน์โหลดถ้าไม่มี Key
-      const downloadButton =
-        document.querySelector(".download-btn");
-      downloadButton.disabled = true;
-      downloadButton.style.opacity = "0.35";
-      downloadButton.style.pointerEvents = "none";
-      document.querySelector(".info").textContent =
+
+      keyElement.textContent =
+        "ไม่พบ Key";
+
+      downloadButton.disabled =
+        true;
+
+      downloadButton.style.opacity =
+        "0.35";
+
+      downloadButton.style.pointerEvents =
+        "none";
+
+      downloadInfo.textContent =
         "กรุณาเข้าผ่านลิงก์ที่มี Key";
     }
-    // Copy Key
-    function copyKey() {
+
+
+    /* =====================================
+       COPY KEY
+    ===================================== */
+
+    async function copyKey() {
+
       if (!key) return;
-      navigator.clipboard.writeText(key)
-        .then(() => {
-          const button =
-            document.querySelector(".copy-btn");
-          const oldText = button.textContent;
-          button.textContent = "COPIED";
-          setTimeout(() => {
-            button.textContent = oldText;
-          }, 1500);
-        })
-        .catch(() => {
-          alert("ไม่สามารถคัดลอก Key ได้");
-        });
+
+      try {
+
+        await navigator.clipboard.writeText(
+          key.trim()
+        );
+
+        const button =
+          document.getElementById("copyBtn");
+
+        const oldText =
+          button.textContent;
+
+        button.textContent =
+          "COPIED";
+
+        setTimeout(() => {
+
+          button.textContent =
+            oldText;
+
+        }, 1500);
+
+      } catch (error) {
+
+        alert(
+          "ไม่สามารถคัดลอก Key ได้"
+        );
+
+      }
     }
-    // Download
+
+
+    /* =====================================
+       DOWNLOAD
+    ===================================== */
+
     function downloadProxy() {
+
       if (!key) {
+
         alert("ไม่พบ Key");
+
         return;
       }
-      window.location.href = DOWNLOAD_URL;
+
+      window.location.href =
+        DOWNLOAD_URL;
     }
-    /*
-      ==========================================
-      CHROME CHECK
-      ==========================================
-    */
-    function isChromeBrowser() {
-      const ua = navigator.userAgent;
-      // Android Chrome
-      const androidChrome =
-        /Android/i.test(ua) &&
-        /Chrome/i.test(ua) &&
-        !/Edg/i.test(ua) &&
-        !/OPR/i.test(ua);
-      // iOS Chrome
-      const iosChrome =
-        /CriOS/i.test(ua);
-      return androidChrome || iosChrome;
-    }
-    // ตรวจสอบเบราว์เซอร์
-    if (!isChromeBrowser()) {
-      document.getElementById("chromeScreen").style.display =
-        "flex";
-      document.getElementById("mainPage").style.display =
-        "none";
-    }
+
   </script>
+
 </body>
 </html>
